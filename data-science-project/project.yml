@@ -1,0 +1,24 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+
+metadata:
+  name: rhods-od-workshop-project
+
+parameters:
+  - name: PROJECT_NAME
+    value: "rhods-od-workshop"
+  - name: DISPLAY_NAME
+    value: "RHODS OD Workshop"
+
+objects:
+  - apiVersion: project.openshift.io/v1
+    kind: Project
+    metadata:
+      name: ${PROJECT_NAME}
+      annotations:
+        openshift.io/description: ${DISPLAY_NAME}
+        openshift.io/display-name: ${DISPLAY_NAME}
+      labels:
+        modelmesh-enabled: "true"
+        opendatahub.io/dashboard: "true"
+
